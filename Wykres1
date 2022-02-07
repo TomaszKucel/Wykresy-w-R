@@ -1,0 +1,23 @@
+ggplot(problemy3, aes(x=factor(platforma, levels = c('Skype','Zoom','Discord','Platforma Moodle','MS Teams')), y= liczba, fill = factor(czestosc, levels = c("bardzo często", "często", "umiarkowanie często", "rzadko", "bardzo rzadko","nie było problemu", "nie korzystam")))) +
+     geom_col(position = 'stack', color = 'white', width = 0.7) +
+     coord_flip() + 
+     geom_text(aes(label = paste0(procent, '%')), position = position_stack(vjust = 0.5)) +
+     theme(legend.position = 'bottom',
+         axis.text=element_text(size=17), 
+         axis.text.x = element_blank(),
+         panel.grid = element_blank(),
+         axis.ticks.y = element_blank(),
+         axis.ticks.x = element_blank(),
+         axis.title.x = element_text(size=17),
+         panel.background = element_blank(),
+         
+           legend.key.size = unit(1, 'cm'),
+         legend.key.height = unit(1, 'cm'), 
+         legend.key.width = unit(1, 'cm'), 
+        # legend.title = element_text(size=16),
+         legend.text = element_text(size=12)) +
+     
+    scale_fill_brewer("",palette="RdBu") +
+     
+     labs(y = "", x = "") +
+    guides(fill = guide_legend(reverse = TRUE, nrow = 1))
