@@ -1,0 +1,69 @@
+ggplot(internet2, aes(x = factor(Var1, levels = c("Nigdy", "Rzadko", "Umiarkowanie często", "Bardzo często")), y = procent, fill = Var1)) + 
+        geom_col(color = 'white', width = 0.6) +
+        coord_flip() +
+        geom_text(aes(label = paste0(procent, '%')), size = 6, hjust = -0.4) +
+        labs(x = "", y = "") +
+        theme(legend.position = 'none',
+        axis.text=element_text(size=17), 
+        axis.text.x = element_blank(),
+        panel.grid = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_text(size=17),
+        panel.background = element_blank()) +
+        scale_fill_brewer(palette = 'Spectral')
+        
+####################################################################
+
+ggplot(kamerki, aes(x = Var1, y = procent, fill = Var2)) + 
+  geom_col(width = 0.8, color = 'white', position = 'dodge') +
+  geom_text(aes(label = paste0(procent, '%')), size = 6, position = position_dodge(width=0.8), vjust = -0.6) +
+  theme(legend.position = c(0.7,0.8),
+    axis.text.x=element_text(size=17), 
+    axis.text.y = element_blank(),
+    panel.grid = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks.x = element_blank(),
+    panel.background = element_blank(),
+    legend.key.size = unit(1, 'cm'),
+    legend.key.height = unit(1, 'cm'), 
+    legend.key.width = unit(1, 'cm'), 
+    legend.text = element_text(size=12)
+    ) +
+  
+  scale_fill_brewer('',palette = 'Set1') +
+  
+    guides(fill = guide_legend(nrow = 1)) +
+  
+  labs(y = "", x = "")
+
+
+###################################################################
+
+
+ggplot(teams3, aes(x=aspekt, y= liczba, fill = factor(ocena, levels = c("bardzo dobrze", 'dobrze', 'nie mam zdania','źle','bardzo źle')))) +
+  geom_col(position = 'stack', color = 'white', width = 0.7) +
+  coord_flip() +
+  geom_text(aes(label = paste0(procent, '%')), position = position_stack(vjust = 0.5)) +
+  theme(legend.position = 'bottom',
+    axis.text=element_text(size=17), 
+    axis.text.x = element_blank(),
+    panel.grid = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.title.x = element_text(size=17),
+    panel.background = element_blank(),
+    
+    legend.key.size = unit(1, 'cm'),
+    legend.key.height = unit(1, 'cm'), 
+    legend.key.width = unit(1, 'cm'), 
+    #= element_text(size=16),
+    legend.text = element_text(size=12)) +
+  
+  labs(y = "", x = "") +
+  scale_fill_brewer("",palette="Spectral") +
+  guides(fill = guide_legend(reverse = TRUE))
+
+
+
+
