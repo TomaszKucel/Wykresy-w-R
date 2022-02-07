@@ -1,0 +1,44 @@
+ggplot(kontakt2, aes(x = Var1, y = Freq, fill = factor(Var2, levels = c("Zdecydowanie zmniejszył się","Raczej się zmniejszył","Pozostał taki sam","Raczej się zwiększył","Zdecydowanie się zwiększył")))) + 
+  geom_col(width = 0.7, color = 'white', position = 'dodge') +
+  geom_text(aes(label = Freq), size = 5, position = position_dodge(width=0.7), vjust = -0.4) +
+  theme(
+        axis.text.x=element_text(size=17), 
+        axis.text.y = element_blank(),
+        
+        panel.grid = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.background = element_blank(),
+        legend.key.size = unit(1.5, 'cm'),
+        legend.key.height = unit(2, 'cm'), 
+        legend.key.width = unit(2, 'cm'), 
+        legend.title = element_text(size=15),
+        legend.text = element_text(size=14)) +
+  
+ scale_fill_brewer('',palette = 'Set1') +
+  
+  
+  labs(y = "", x = "")
+
+
+####################################################
+
+ggplot(pyt.10, aes(x = prywatność, y = liczba, fill = korzystne)) + 
+    geom_col(color = 'white',position = position_dodge(width=0.7), width = 0.7) +
+               geom_text(aes(label=liczba), vjust = -0.5, size = 6.3, position = position_dodge(width = 0.7)) +
+               theme(legend.position = 'top',
+                     axis.text=element_text(size=20), 
+                     axis.text.y = element_blank(),
+                     panel.grid = element_blank(),
+                     axis.ticks.y = element_blank(),
+                     axis.ticks.x = element_blank(),
+                     axis.title.x = element_text(size=18),
+                     panel.background = element_blank(),
+                     legend.key.size = unit(1, 'cm'),
+                     legend.key.height = unit(1.5, 'cm'), 
+                     legend.key.width = unit(1.5, 'cm'), 
+                     legend.title = element_text(size=18),
+                     legend.text = element_text(size=12)) +
+               
+               scale_fill_discrete(name = "Czy udostępnianie obrazu z kamer jest korzystne dla prowadzącego") +
+               labs(y = "", x = "Czy włączanie kamerek narusza prywatność")
